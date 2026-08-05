@@ -1,0 +1,40 @@
+<div class="filter-bar">
+
+  <input placeholder="search by name" class="product-search" type="text" (input)="productService.setSearchTerm($any($event.target).value)">
+  <button class="sort-by-asc" (click)="productService.setSortDirection('asc')">Sort by price ↑</button>
+  <button class="sort-by-desc" (click)="productService.setSortDirection('desc')">Sort by price ↓</button>
+
+</div>
+<p></p>
+
+<div class="filter-bar">
+  <button (click)="productService.setCategory('all')" [class.active]="productService.selectedCategory()==='all'">All
+  </button>
+  <button (click)="productService.setCategory('electronics')"
+          [class.active]="productService.selectedCategory()==='electronics'">Electronics
+  </button>
+  <button (click)="productService.setCategory('clothing')"
+          [class.active]="productService.selectedCategory()==='clothing'">Clothing
+  </button>
+  <button (click)="productService.setCategory('food')" [class.active]="productService.selectedCategory()==='food'">
+    Food
+  </button>
+</div>
+
+<ul class="product-list">
+  @for (product of productService.filtredProducts(); track product.id) {
+    <li class="product-item" [class.out-of-stock]="!product.inStock">
+      <span class="product-name"> {{ product.name }}</span>
+      <span class="product-price"> ${{ product.price }} </span>
+      <span class="product-category"> {{ product.category }}</span>
+      @if (!product.inStock) {
+        <span class="status no-stock"> Out of Stock</span>
+      } @else {
+        <span class="status in-stock"> In Stock</span>
+      }
+    </li>
+
+  } @empty {
+    <li class="no-products"> No products in stock</li>
+  }
+</ul>

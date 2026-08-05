@@ -1,0 +1,19 @@
+.navbar{
+  padding: 1rem 3rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgb(0,0,0,0.1);
+  background-color: seagreen;
+}
+.active{
+  text-decoration: underline;
+  font-weight: bold;
+  color: white;
+}
+a{
+  padding: 1rem 1rem;
+  text-decoration: none;
+}
