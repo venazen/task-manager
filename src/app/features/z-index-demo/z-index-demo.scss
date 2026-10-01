@@ -1,0 +1,39 @@
+.page{
+  position: relative;
+  height: 400px;
+  padding: 50px;
+}
+
+.parent-a{
+  position: relative;
+  //z-index: 1;
+}
+
+.dropdown{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  transform: translateX(0);
+
+  width: 200px;
+  height: 100px;
+
+  background:red;
+  color: white;
+
+  z-index: 9999;
+}
+
+.parent-b{
+  position: relative;
+  z-index: 2;
+
+  width: 300px;
+  height: 200px;
+
+  background: blue;
+  color: white;
+
+  margin-top: -50px;
+  padding: 20px;
+}

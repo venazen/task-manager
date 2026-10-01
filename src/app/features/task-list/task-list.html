@@ -1,10 +1,14 @@
-<div class="task-list">
+<ul class="task-list">
+  @for (task of taskService.tasks(); track task.id) {
+    <li class="task-item" [class.completed]="task.completed">
 
-@for (task of taskService.tasks(); track task.id){
-  <div class="task-item" [class.completed]="task.completed">
-    <input type="checkbox" [checked]="task.completed" (change)="taskService.toggleCompleted(task.id)" />
-    <span class="title">{{task.title}}</span>
-    <span class="priority"> {{task.priority}}</span>
-  </div>
-}
-</div>
+      <input type="checkbox" [checked]="task.completed" (change)="taskService.toggleCompleted(task.id)" />
+      <span class="title">{{ task.title }}</span>
+      <span class="priority"> {{ task.priority }}</span>
+    </li>
+
+  } @empty {
+    <li>Ne tasks on board</li>
+  }
+</ul>
+
